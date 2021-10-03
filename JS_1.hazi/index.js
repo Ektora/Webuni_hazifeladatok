@@ -1,62 +1,43 @@
+import {szinez} from "./szinez.js";
+import {szamolas} from "./szamol.js";
 document.addEventListener('DOMContentLoaded', function(){
 	initFeladatok();
 });
 
 
-feladat1={
+const feladat1={
 	name: 'Bevásárlás',
 	isCompleted: false
 };
 
-feladat2={
+const feladat2={
 	name: 'Házi állatok etetése',
 	isCompleted: false
 };
 
-feladat3={
+const feladat3={
 	name: 'Szemét lehúzása',
 	isCompleted: false
 };
 
-feladat4={
+const feladat4={
 	name: 'Autómosás',
 	isCompleted: true
 };
 
-feladat5={
+const feladat5={
 	name: 'Fűnyírás',
 	isCompleted: false
 };
 
-feladat6={
+const feladat6={
 	name: 'Levágott fű összegyűjtése',
 	isCompleted: true
 };
 
 const feladatok = [feladat1, feladat2, feladat3, feladat4, feladat5, feladat6];
 
-const szamolas = feladatok => {
-		let count = 0;
-		for(let i = 0; i < feladatok.length; i++){
-			if(feladatok[i].isCompleted){
-			count++;
-			}
-		}
-		return count/feladatok.length*100;
-	}
 
-const szinez = (index, checked) => {
-	const tomb = document.querySelectorAll('.szinez');
-	if(checked){
-		tomb[index].style.color='black';
-		tomb[index].style.textDecoration='line-through';
-	}
-	else{
-		tomb[index].style.color='red';
-		tomb[index].style.textDecoration='none';
-	}
-};
-	
 const initFeladatok = () => {
 	document.querySelector('#completed-average').innerHTML = `${Math.round(szamolas(feladatok))} %`;
 	const container = document.getElementById('todo-list');
