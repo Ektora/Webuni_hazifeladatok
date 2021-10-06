@@ -4,38 +4,44 @@ document.addEventListener('DOMContentLoaded', function(){
 	initFeladatok();
 });
 
-
-const feladat1={
+const feladatok = [];
+feladatok[0]={
 	name: 'Bevásárlás',
+	nehezseg : 2,
 	isCompleted: false
 };
 
-const feladat2={
+feladatok[1]={
 	name: 'Házi állatok etetése',
+	nehezseg : 4,
 	isCompleted: false
 };
 
-const feladat3={
+feladatok[2]={
 	name: 'Szemét lehúzása',
+	nehezseg : 1,
 	isCompleted: false
 };
 
-const feladat4={
+feladatok[3]={
 	name: 'Autómosás',
-	isCompleted: true
-};
-
-const feladat5={
-	name: 'Fűnyírás',
+	nehezseg : 5,
 	isCompleted: false
 };
 
-const feladat6={
-	name: 'Levágott fű összegyűjtése',
-	isCompleted: true
+feladatok[4]={
+	name: 'Fűnyírás',
+	nehezseg : 4,
+	isCompleted: false
 };
 
-const feladatok = [feladat1, feladat2, feladat3, feladat4, feladat5, feladat6];
+feladatok[5]={
+	name: 'Levágott fű összegyűjtése',
+	nehezseg : 2,
+	isCompleted: false
+};
+
+//const feladatok = [feladat1, feladat2, feladat3, feladat4, feladat5, feladat6];
 
 
 const initFeladatok = () => {
@@ -56,7 +62,6 @@ const initFeladatok = () => {
 	});
 	
 	for(let i=0;i<segedtomb.length;i++){
-		console.log(segedtomb[i]);
 		szinez(segedtomb[i],true);
 	}
 	
