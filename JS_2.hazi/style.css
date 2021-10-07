@@ -1,0 +1,31 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	color: #242424;
+	padding: 5px 0 0 10px;
+}
+h1{
+	text-shadow: 2px 2px lightgrey;
+}
+
+.check{
+	border-radius:15px;
+}
+.complete{
+	color: black;
+	text-decoration: line-through;
+}
+.not-complete{
+	color:red;
+}
+
+#completed{
+	font-size:24px;
+	margin-top: 10px;
+}
+ #completed-title{
+	font-weight: bold;
+}
+#rendezes{
+	line-height: 36px;
+}
