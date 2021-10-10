@@ -1,5 +1,7 @@
-//import {szinez} from "./szinez.js";
-//import {szamolas} from "./szamol.js";
+import {szamolas} from "./szamol.js";
+import {novekvoRendezes} from "./rendezes.js";
+import {csokkenoRendezes} from "./rendezes.js";
+import {legnehezebbElem} from "./rendezes.js";
 document.addEventListener('DOMContentLoaded', function(){
 	initFeladatok();
 	eventUjFeladatHozzaAdasa(feladatok);
@@ -58,15 +60,6 @@ const szazalek = () => {
 	document.querySelector('#completed-average').innerHTML = `${Math.round(szamolas(feladatok))} %`;
 };
 
-const szamolas = feladatok => {
-    let count = 0;
-    for(let i = 0; i < feladatok.length; i++){
-        if(feladatok[i].isCompleted){
-        count++;
-        }
-    }
-    return count/feladatok.length*100;
-};
 
 const eventHozzaAdas = (feladatok) => {
 	document.querySelectorAll('.check').forEach((input, index) => {
@@ -110,7 +103,7 @@ const eventUjFeladatHozzaAdasa = (feladatok) => {
 	});
 }
 
-const feladatKiIras = feladatok =>{
+export const feladatKiIras = feladatok =>{
 	const container = document.getElementById('todo-list');
 	let text='';
 	feladatok.forEach((feladat, index) => {
@@ -128,36 +121,4 @@ const feladatKiIras = feladatok =>{
 	legnehezebbElem(feladatok);
 };
 
-const novekvoRendezes = feladatok =>{
-	const gomb = document.getElementById('novekvoGomb');
-	gomb.addEventListener('click', ()=>{
-		feladatok.sort((a,b)=>{
-			return a.difficulty - b.difficulty;
-		});
-		feladatKiIras(feladatok);
-	});
-};
 
-const csokkenoRendezes = feladatok =>{
-	const gomb = document.getElementById('csokkenoGomb');
-	gomb.addEventListener('click', ()=>{
-		feladatok.sort((a,b)=>{
-			return b.difficulty - a.difficulty;
-		});
-		feladatKiIras(feladatok);
-	});
-};
-
-const legnehezebbElem = feladatok =>{
-	const elem = document.getElementById('legnehezebbElem');
-	let seged = feladatok.map((value) =>{
-	if(!value.isCompleted)
-		return value.difficulty;
-	else
-		return 0;
-	});
-	if(Math.max(...seged) > 0)
-	elem.innerHTML = `${feladatok[seged.indexOf(Math.max(...seged))].name} - ${feladatok[seged.indexOf(Math.max(...seged))].difficulty}`;
-	else
-	elem.innerHTML = "Gratulálok, minden feladatot elvégeztél!";
-};
